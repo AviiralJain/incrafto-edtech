@@ -37,6 +37,12 @@ export function setStoredAuth(token: string, user: AuthUser | null) {
 
   window.localStorage.setItem(TOKEN_STORAGE_KEY, token)
   window.localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user || {}))
+
+  // Set a role cookie so Next.js middleware can guard routes before page render.
+  // This is a UX/navigation aid only — NOT a security mechanism.
+  // The backend JWT verification remains the authoritative security boundary.
+  const role = user?.role?.toLowerCase() || ''
+  document.cookie = `role=${role}; path=/; SameSite=Lax`
 }
 
 export function clearStoredAuth() {
@@ -44,6 +50,9 @@ export function clearStoredAuth() {
 
   window.localStorage.removeItem(TOKEN_STORAGE_KEY)
   window.localStorage.removeItem(USER_STORAGE_KEY)
+
+  // Clear the role cookie used by Next.js middleware for navigation guarding.
+  document.cookie = 'role=; path=/; max-age=0; SameSite=Lax'
 }
 
 export async function fetchCurrentUser(token?: string): Promise<AuthUser | null> {

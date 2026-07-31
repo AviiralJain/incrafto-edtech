@@ -14,18 +14,19 @@ export default function TeacherLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const auth = getStoredAuth();
     const role = auth?.user?.role?.toLowerCase();
 
     if (auth?.token) {
-      if (role === "student") {
-        router.replace("/student-dashboard");
-      } else if (role === "admin") {
-        router.replace("/admin-dashboard");
-      } else {
+      if (role === "teacher") {
         router.replace("/teacher-dashboard");
+      } else if (role === "admin") {
+        router.replace("/admin/dashboard");
+      } else if (role === "student") {
+        router.replace("/student-dashboard");
       }
     }
   }, [router]);
@@ -45,19 +46,18 @@ export default function TeacherLoginPage() {
         password,
       });
 
+      const role = response?.data?.user?.role?.toLowerCase();
+
+      if (role !== "teacher") {
+        setError("Access denied. This portal is for teachers only.");
+        return;
+      }
+
       clearStoredAuth();
       setStoredAuth(response.data.token, response.data.user);
-
-      const role = response?.data?.user?.role?.toLowerCase();
-      if (role === "student") {
-        router.replace("/student-dashboard");
-      } else if (role === "admin") {
-        router.replace("/admin-dashboard");
-      } else {
-        router.replace("/teacher-dashboard");
-      }
-    } catch (error: any) {
-      alert(error?.response?.data?.message || "Login Failed");
+      router.replace("/teacher-dashboard");
+    } catch (err: any) {
+      setError(err?.response?.data?.message || "Login Failed");
     } finally {
       setLoading(false);
     }
@@ -184,6 +184,13 @@ export default function TeacherLoginPage() {
                   Forgot Password?
                 </Link>
               </div>
+
+              {/* Error Message */}
+              {error && (
+                <p className="rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-400">
+                  {error}
+                </p>
+              )}
 
               <button
                 type="submit"

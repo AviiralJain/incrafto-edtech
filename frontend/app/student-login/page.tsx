@@ -17,18 +17,19 @@ export default function StudentLoginPage() {
   const [password, setPassword] = useState("");
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const auth = getStoredAuth();
     const role = auth?.user?.role?.toLowerCase();
 
     if (auth?.token) {
-      if (role === "teacher") {
-        router.replace("/teacher-dashboard");
-      } else if (role === "admin") {
-        router.replace("/admin-dashboard");
-      } else {
+      if (role === "student") {
         router.replace("/student-dashboard");
+      } else if (role === "admin") {
+        router.replace("/admin/dashboard");
+      } else if (role === "teacher") {
+        router.replace("/teacher-dashboard");
       }
     }
   }, [router]);
@@ -50,25 +51,20 @@ export default function StudentLoginPage() {
         }
       );
 
-      clearStoredAuth();
-      setStoredAuth(response.data.token, response.data.user);
-
       const role = response?.data?.user?.role?.toLowerCase();
-      if (role === "teacher") {
-        router.replace("/teacher-dashboard");
-      } else if (role === "admin") {
-        router.replace("/admin-dashboard");
-      } else {
-        router.replace("/student-dashboard");
+
+      if (role !== "student") {
+        setError("Access denied. This portal is for students only.");
+        return;
       }
 
-    } catch (error: any) {
-      console.log("LOGIN ERROR:", error);
+      clearStoredAuth();
+      setStoredAuth(response.data.token, response.data.user);
+      router.replace("/student-dashboard");
 
-      alert(
-        error?.response?.data?.message ||
-        "Login Failed"
-      );
+    } catch (err: any) {
+      console.log("LOGIN ERROR:", err);
+      setError(err?.response?.data?.message || "Login Failed");
     } finally {
       setLoading(false);
     }
@@ -215,6 +211,13 @@ export default function StudentLoginPage() {
                   Forgot Password?
                 </Link>
               </div>
+
+              {/* Error Message */}
+              {error && (
+                <p className="rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-3 text-sm text-red-400">
+                  {error}
+                </p>
+              )}
 
               {/* Login Button */}
               <button
