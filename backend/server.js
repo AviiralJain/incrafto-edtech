@@ -13,6 +13,8 @@ const placementRoutes = require('./routes/placements')
 const dashboardRoutes = require('./routes/dashboard')
 const contentRoutes = require("./routes/content");
 const assignmentRoutes = require("./routes/assignments");
+const studentPortalRoutes = require('./routes/studentPortal')
+const teacherPortalRoutes = require('./routes/teacherPortal')
 const app = express();
 
 // Middleware
@@ -48,6 +50,8 @@ app.use('/api/placements', placementRoutes)
 app.use('/api/admin/dashboard', dashboardRoutes)
 app.use("/api/content", contentRoutes);
 app.use("/api/assignments", assignmentRoutes);
+app.use('/api/student', studentPortalRoutes)
+app.use('/api/teacher', teacherPortalRoutes)
 // Start Server
 const PORT = process.env.PORT || 5000;
 
