@@ -12,6 +12,7 @@ import {
   Download,
   X,
 } from "lucide-react";
+import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 interface Assignment {
   _id?: string;
@@ -98,7 +99,10 @@ export default function AssignmentsPage() {
   const totalSubmissions = assignments.reduce((sum, a) => sum + a.submissions, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-8">
+      <div className="absolute top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
       {/* Hero Banner */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -134,10 +138,10 @@ export default function AssignmentsPage() {
           { title: "Pending", value: pendingCount, icon: Clock },
           { title: "Average Score", value: "84%", icon: TrendingUp },
         ].map((item) => (
-          <div key={item.title} className="bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-xl border border-white/40">
-            <item.icon size={28} className="text-blue-600" />
-            <h3 className="mt-4 text-gray-500 font-medium">{item.title}</h3>
-            <p className="text-4xl font-black text-slate-800">{item.value}</p>
+          <div key={item.title} className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-6 shadow-xl border border-white/40 dark:border-slate-800">
+            <item.icon size={28} className="text-blue-600 dark:text-blue-400" />
+            <h3 className="mt-4 text-gray-500 dark:text-gray-400 font-medium">{item.title}</h3>
+            <p className="text-4xl font-black text-slate-800 dark:text-white">{item.value}</p>
           </div>
         ))}
       </div>
@@ -151,13 +155,13 @@ export default function AssignmentsPage() {
           <Plus size={18} />
           Create Assignment
         </button>
-        <button className="bg-white py-4 rounded-2xl shadow font-semibold text-slate-700 hover:bg-slate-50 transition">
+        <button className="bg-white dark:bg-slate-900 py-4 rounded-2xl shadow font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
           Review Submissions
         </button>
-        <button className="bg-white py-4 rounded-2xl shadow font-semibold text-slate-700 hover:bg-slate-50 transition">
+        <button className="bg-white dark:bg-slate-900 py-4 rounded-2xl shadow font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
           Grade Assignments
         </button>
-        <button className="bg-white py-4 rounded-2xl shadow flex justify-center items-center gap-2 font-semibold text-slate-700 hover:bg-slate-50 transition">
+        <button className="bg-white dark:bg-slate-900 py-4 rounded-2xl shadow flex justify-center items-center gap-2 font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
           <Download size={18} />
           Export Grades
         </button>
@@ -172,18 +176,18 @@ export default function AssignmentsPage() {
             <motion.div
               key={assignment._id || assignment.id || index}
               whileHover={{ scale: 1.01 }}
-              className="bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl border border-white/50"
+              className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl border border-white/50 dark:border-slate-800"
             >
               <div className="flex justify-between items-center">
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-800">{assignment.title}</h2>
-                  <p className="text-gray-500 mt-2">Due: {assignment.dueDate}</p>
+                  <h2 className="text-2xl font-bold text-slate-800 dark:text-white">{assignment.title}</h2>
+                  <p className="text-gray-500 dark:text-gray-400 mt-2">Due: {assignment.dueDate}</p>
                 </div>
                 <span
                   className={`px-4 py-2 rounded-full font-semibold text-sm ${
                     assignment.status === "Active"
-                      ? "bg-green-100 text-green-700"
-                      : "bg-amber-100 text-amber-700"
+                      ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                      : "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
                   }`}
                 >
                   {assignment.status}
@@ -192,14 +196,14 @@ export default function AssignmentsPage() {
 
               <div className="grid md:grid-cols-2 gap-6 mt-6">
                 <div>
-                  <p className="text-gray-500">Submissions</p>
-                  <h3 className="text-3xl font-black text-slate-800">
+                  <p className="text-gray-500 dark:text-gray-400">Submissions</p>
+                  <h3 className="text-3xl font-black text-slate-800 dark:text-white">
                     {assignment.submissions} / {assignment.totalStudents}
                   </h3>
                 </div>
                 <div>
-                  <p className="text-gray-500">Completion</p>
-                  <h3 className="text-3xl font-black text-slate-800">
+                  <p className="text-gray-500 dark:text-gray-400">Completion</p>
+                  <h3 className="text-3xl font-black text-slate-800 dark:text-white">
                     {assignment.totalStudents > 0
                       ? Math.round((assignment.submissions / assignment.totalStudents) * 100)
                       : 0}
@@ -212,7 +216,7 @@ export default function AssignmentsPage() {
                 <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-3 rounded-xl font-medium shadow">
                   View
                 </button>
-                <button className="border border-slate-300 text-slate-700 px-5 py-3 rounded-xl font-medium hover:bg-slate-50">
+                <button className="border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 px-5 py-3 rounded-xl font-medium hover:bg-slate-50 dark:hover:bg-slate-800">
                   Grade
                 </button>
               </div>
@@ -229,19 +233,19 @@ export default function AssignmentsPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white rounded-[32px] w-full max-w-md p-8 shadow-2xl border border-slate-100 relative"
+              className="bg-white dark:bg-slate-900 rounded-[32px] w-full max-w-md p-8 shadow-2xl border border-slate-100 dark:border-slate-800 relative"
             >
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="absolute right-6 top-6 text-gray-400 hover:text-gray-600"
+                className="absolute right-6 top-6 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
               >
                 <X size={20} />
               </button>
-              <h3 className="text-2xl font-black text-slate-800 mb-6">New Assignment</h3>
+              <h3 className="text-2xl font-black text-slate-800 dark:text-white mb-6">New Assignment</h3>
 
               <form onSubmit={handleCreateAssignment} className="space-y-5">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-600 mb-2">
+                  <label className="block text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
                     Assignment Title
                   </label>
                   <input
@@ -250,12 +254,12 @@ export default function AssignmentsPage() {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="e.g., Redux State Integration"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-blue-500 transition"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white outline-none focus:border-blue-500 transition"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-600 mb-2">
+                  <label className="block text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
                     Due Date
                   </label>
                   <input
@@ -263,19 +267,19 @@ export default function AssignmentsPage() {
                     required
                     value={dueDate}
                     onChange={(e) => setDueDate(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-blue-500 transition"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white outline-none focus:border-blue-500 transition"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-600 mb-2">
+                  <label className="block text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
                     Target Class Batch Size (Students)
                   </label>
                   <input
                     type="number"
                     value={totalStudents}
                     onChange={(e) => setTotalStudents(Number(e.target.value))}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-blue-500 transition"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white outline-none focus:border-blue-500 transition"
                   />
                 </div>
 

@@ -7,6 +7,7 @@ import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { clearStoredAuth, getStoredAuth, setStoredAuth } from '@/lib/auth';
+import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -69,7 +70,10 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-950">
+    <div className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
+      <div className="absolute top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
       {/* Background Effects */}
       <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl" />
       <div className="absolute bottom-10 right-10 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl" />
@@ -80,14 +84,14 @@ export default function AdminLoginPage() {
           initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          className="hidden lg:flex w-1/2 flex-col justify-center px-20 text-white"
+          className="hidden lg:flex w-1/2 flex-col justify-center px-20 text-slate-900 dark:text-white"
         >
           <h1 className="text-5xl font-bold leading-tight">
-            Manage The InCrafto Platform
+            System Administration
           </h1>
-          <p className="mt-6 text-lg text-slate-300">
-            Access administrative tools to manage students, teachers,
-            courses, placements and platform operations.
+          <p className="mt-6 text-lg text-slate-600 dark:text-slate-300">
+            Control the entire platform, manage users, monitor analytics,
+            and ensure smooth operations from the command center.
           </p>
 
           <div className="mt-10 space-y-5">
@@ -117,12 +121,12 @@ export default function AdminLoginPage() {
           transition={{ duration: 0.7 }}
           className="flex w-full lg:w-1/2 items-center justify-center px-6"
         >
-          <div className="w-full max-w-md rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 shadow-2xl">
-            <h2 className="text-3xl font-bold text-white text-center">
+          <div className="w-full max-w-md rounded-3xl border border-black/5 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-xl p-8 shadow-2xl">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white text-center">
               Admin Login
             </h2>
-            <p className="mt-2 text-center text-slate-400">
-              Login to access your admin dashboard
+            <p className="mt-2 text-center text-slate-600 dark:text-slate-400">
+              Restricted access. Authorized personnel only.
             </p>
 
             <form onSubmit={handleLogin} className="mt-8 space-y-5">
@@ -133,7 +137,7 @@ export default function AdminLoginPage() {
               )}
 
               <div>
-                <label className="mb-2 block text-sm text-slate-300">
+                <label className="mb-2 block text-sm text-slate-700 dark:text-slate-300">
                   Admin Email
                 </label>
                 <input
@@ -142,12 +146,12 @@ export default function AdminLoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter admin email"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-blue-500"
+                  className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-blue-500"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-sm text-slate-300">
+                <label className="mb-2 block text-sm text-slate-700 dark:text-slate-300">
                   Password
                 </label>
                 <div className="relative">
@@ -157,7 +161,7 @@ export default function AdminLoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password"
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-blue-500"
+                    className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-blue-500"
                   />
                   <button
                     type="button"
@@ -194,13 +198,13 @@ export default function AdminLoginPage() {
             </form>
 
             <div 
-              className="mt-6 rounded-xl border border-purple-500/20 bg-purple-500/10 p-4 text-sm text-slate-300 cursor-pointer hover:bg-purple-500/20 transition"
+              className="mt-6 rounded-xl border border-purple-500/20 bg-purple-500/10 p-4 text-sm text-slate-600 dark:text-slate-300 cursor-pointer hover:bg-purple-500/20 transition"
               onClick={() => {
                 setEmail("admin@incrafto.com");
                 setPassword("admin123");
               }}
             >
-              <p className="font-semibold text-white mb-1 flex justify-between items-center">
+              <p className="font-semibold text-slate-900 dark:text-white mb-1 flex justify-between items-center">
                 <span>Demo Credentials</span>
                 <span className="text-xs text-purple-400 font-normal">Click to auto-fill</span>
               </p>
@@ -208,8 +212,8 @@ export default function AdminLoginPage() {
               <p>Password: admin123</p>
             </div>
 
-            <p className="mt-6 text-center text-sm text-slate-400">
-              Administrator access only
+            <p className="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+              Unauthorized access attempts are logged and monitored.
             </p>
           </div>
         </motion.div>

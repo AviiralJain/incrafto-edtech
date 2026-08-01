@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { clearStoredAuth, getStoredAuth, setStoredAuth } from '@/lib/auth';
+import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 export default function TeacherLoginPage() {
   const router = useRouter();
@@ -64,8 +65,10 @@ export default function TeacherLoginPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-950">
-
+    <div className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
+      <div className="absolute top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
       {/* Background Effects */}
       <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl" />
       <div className="absolute bottom-10 right-10 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl" />
@@ -77,13 +80,13 @@ export default function TeacherLoginPage() {
           initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          className="hidden lg:flex w-1/2 flex-col justify-center px-20 text-white"
+          className="hidden lg:flex w-1/2 flex-col justify-center px-20 text-slate-900 dark:text-white"
         >
           <h1 className="text-5xl font-bold leading-tight">
             Empower Students Through Teaching
           </h1>
 
-          <p className="mt-6 text-lg text-slate-300">
+          <p className="mt-6 text-lg text-slate-600 dark:text-slate-300">
             Manage courses, assignments, attendance and student progress
             through the InCrafto Teacher Portal.
           </p>
@@ -120,20 +123,20 @@ export default function TeacherLoginPage() {
           transition={{ duration: 0.7 }}
           className="flex w-full lg:w-1/2 items-center justify-center px-6"
         >
-          <div className="w-full max-w-md rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 shadow-2xl">
+          <div className="w-full max-w-md rounded-3xl border border-black/5 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-xl p-8 shadow-2xl">
 
-            <h2 className="text-3xl font-bold text-white text-center">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white text-center">
               Teacher Login
             </h2>
 
-            <p className="mt-2 text-center text-slate-400">
+            <p className="mt-2 text-center text-slate-600 dark:text-slate-400">
               Login to access your teacher dashboard
             </p>
 
             <form className="mt-8 space-y-5" onSubmit={handleLogin}>
 
               <div>
-                <label className="mb-2 block text-sm text-slate-300">
+                <label className="mb-2 block text-sm text-slate-700 dark:text-slate-300">
                   Teacher Email
                 </label>
 
@@ -142,12 +145,12 @@ export default function TeacherLoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your teacher email"
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-blue-500"
+                  className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-blue-500"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-sm text-slate-300">
+                <label className="mb-2 block text-sm text-slate-700 dark:text-slate-300">
                   Password
                 </label>
 
@@ -158,7 +161,7 @@ export default function TeacherLoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password"
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-blue-500"
+                    className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-white outline-none focus:border-blue-500"
                   />
 
                   <button
@@ -211,7 +214,7 @@ export default function TeacherLoginPage() {
 </div>
 
 
-            <p className="mt-8 text-center text-sm text-slate-400">
+            <p className="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
               Teacher accounts are created and managed by administrators.
             </p>
 

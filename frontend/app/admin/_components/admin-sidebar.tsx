@@ -32,7 +32,7 @@ export function AdminSidebar({
             <h1 className="text-3xl font-black bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               InCrafto
             </h1>
-            <p className="mt-2 text-gray-500">
+            <p className="mt-2 text-gray-500 dark:text-gray-400">
               Super Admin Panel
             </p>
           </div>
@@ -40,7 +40,7 @@ export function AdminSidebar({
           <button
             type="button"
             onClick={() => onMobileOpenChange(false)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 text-slate-500 transition hover:text-slate-950 lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/60 dark:border-slate-800 text-slate-500 dark:text-slate-400 transition hover:text-slate-950 dark:hover:text-slate-200 lg:hidden"
             aria-label="Close sidebar"
           >
             <PanelLeft className="h-4 w-4" />
@@ -87,7 +87,7 @@ export function AdminSidebar({
 
   return (
     <>
-      <aside className="hidden lg:flex flex-col w-64 h-screen sticky top-0 bg-white/80 backdrop-blur-xl border-r border-white/60">
+      <aside className="hidden lg:flex flex-col w-64 h-screen sticky top-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-r border-white/60 dark:border-slate-800">
         {sidebarContent}
       </aside>
 
@@ -101,7 +101,7 @@ export function AdminSidebar({
       >
         <aside
           className={cn(
-            'absolute left-0 top-0 flex h-full w-[min(88vw,18rem)] flex-col bg-white/95 backdrop-blur-xl border-r border-white/60 shadow-2xl transition-transform duration-200',
+            'absolute left-0 top-0 flex h-full w-[min(88vw,18rem)] flex-col bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-r border-white/60 dark:border-slate-800 shadow-2xl transition-transform duration-200',
             mobileOpen ? 'translate-x-0' : '-translate-x-full',
           )}
           onClick={(event) => event.stopPropagation()}

@@ -117,7 +117,7 @@ export default function AdminDashboardPage() {
       </section>
 
       {error ? (
-        <div className="rounded-3xl border border-rose-200 bg-rose-50 px-6 py-4 text-sm text-rose-700">
+        <div className="rounded-3xl border border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/30 px-6 py-4 text-sm text-rose-700 dark:text-rose-200">
           {error}
         </div>
       ) : null}

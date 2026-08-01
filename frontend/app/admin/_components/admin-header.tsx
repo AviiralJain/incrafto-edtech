@@ -29,28 +29,28 @@ export function AdminHeader({ onMenuClick }: AdminHeaderProps) {
 
   return (
     <header className="px-6 pt-6 sm:px-8 sm:pt-8">
-      <div className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-4xl p-5 sm:p-6 shadow-xl mb-8">
+      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/60 dark:border-slate-800 rounded-4xl p-5 sm:p-6 shadow-xl mb-8">
         <div className="flex items-center gap-4">
           <button
             type="button"
             onClick={onMenuClick}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/60 bg-white/80 text-slate-600 transition hover:text-slate-950 lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/60 dark:border-slate-800 bg-white/80 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition hover:text-slate-950 dark:hover:text-white lg:hidden"
             aria-label="Open sidebar"
           >
             <Menu className="h-5 w-5" />
           </button>
 
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-medium text-gray-500">Admin / {section}</p>
-            <h2 className="text-3xl font-bold text-gray-900">Manage InCrafto</h2>
+            <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Admin / {section}</p>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Manage InCrafto</h2>
           </div>
 
-          <div className="hidden w-full max-w-md items-center gap-2 rounded-2xl bg-slate-50 px-4 py-3 md:flex">
+          <div className="hidden w-full max-w-md items-center gap-2 rounded-2xl bg-slate-50 dark:bg-slate-800 px-4 py-3 md:flex">
             <Search className="h-4 w-4 text-gray-400" />
             <input
               type="text"
               placeholder="Search students, courses, teachers..."
-              className="w-full bg-transparent text-sm text-gray-700 outline-none placeholder:text-gray-400"
+              className="w-full bg-transparent text-sm text-gray-700 dark:text-slate-200 outline-none placeholder:text-gray-400"
             />
           </div>
 
@@ -58,19 +58,19 @@ export function AdminHeader({ onMenuClick }: AdminHeaderProps) {
 
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/60 bg-white/80 text-slate-600 transition hover:text-slate-950"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/60 dark:border-slate-800 bg-white/80 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition hover:text-slate-950 dark:hover:text-white"
             aria-label="Notifications"
           >
             <Bell className="h-5 w-5" />
           </button>
 
-          <div className="hidden items-center gap-3 rounded-2xl bg-slate-50 px-3 py-2 lg:flex">
+          <div className="hidden items-center gap-3 rounded-2xl bg-slate-50 dark:bg-slate-800 px-3 py-2 lg:flex">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-r from-blue-500 to-purple-500 text-sm font-semibold text-white">
               AD
             </div>
             <div>
-              <p className="text-sm font-semibold text-slate-900">Admin User</p>
-              <p className="text-xs text-slate-500">Super admin</p>
+              <p className="text-sm font-semibold text-slate-900 dark:text-white">Admin User</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Super admin</p>
             </div>
           </div>
         </div>
