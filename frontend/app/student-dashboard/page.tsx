@@ -53,7 +53,7 @@ export default function StudentDashboard() {
         }
 
         const response = await axios.get(
-          "http://localhost:5000/api/auth/profile",
+          "http://localhost:5000/api/student/dashboard",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -61,13 +61,21 @@ export default function StudentDashboard() {
           }
         );
 
-        if (response?.data?.user) {
-          setStudent(response.data.user);
-          localStorage.setItem("user", JSON.stringify(response.data.user));
+        if (response?.data?.data) {
+          const d = response.data.data;
+          setStudent({
+            name: d.profile?.name,
+            email: d.profile?.email,
+            course: d.course?.name || undefined,
+            attendance: d.student?.attendance,
+            placementStatus: d.student?.placementStatus,
+            assignments: d.assignments,
+          });
+          localStorage.setItem("user", JSON.stringify(d.profile));
         } else if (savedUser) {
           setStudent(JSON.parse(savedUser));
         } else {
-          throw new Error("No user data returned");
+          throw new Error("No dashboard data returned");
         }
       } catch (error: any) {
         console.error("Failed to load student profile", error);
