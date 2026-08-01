@@ -123,7 +123,7 @@ export default function TeacherDashboard() {
   const teacherTitle = teacher?.specialization || 'Senior Instructor';
 
   return (
-  <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+  <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
 
   <div className="fixed inset-0 overflow-hidden pointer-events-none">
 
@@ -135,7 +135,7 @@ export default function TeacherDashboard() {
 
   <div className="relative flex">
 
-    <aside className="hidden lg:flex flex-col w-72 h-screen sticky top-0 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-r border-white/50 dark:border-slate-800">
+    <aside className="hidden lg:flex flex-col w-72 h-screen sticky top-0 bg-white/70 backdrop-blur-xl border-r border-white/50">
 
       <div className="p-8">
 
@@ -143,7 +143,7 @@ export default function TeacherDashboard() {
           InCrafto
         </h1>
 
-        <p className="text-gray-500 dark:text-gray-400 mt-2">
+        <p className="text-gray-500 mt-2">
           Teacher Portal
         </p>
 
@@ -235,7 +235,7 @@ export default function TeacherDashboard() {
       className={`flex items-center gap-4 p-4 rounded-2xl cursor-pointer transition-all ${
         index === 0
           ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl"
-          : "hover:bg-white dark:hover:bg-slate-800 dark:text-slate-300"
+          : "hover:bg-white"
       }`}
     >
       <item.icon size={20} />

@@ -12,12 +12,12 @@ type StatsCardProps = {
 }
 
 const toneClasses: Record<NonNullable<StatsCardProps['tone']>, string> = {
-  sky: 'from-sky-500/15 to-cyan-500/10 text-sky-700 dark:text-sky-300 border-sky-200 dark:border-sky-800',
-  emerald: 'from-emerald-500/15 to-teal-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800',
-  amber: 'from-amber-500/15 to-orange-500/10 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800',
-  rose: 'from-rose-500/15 to-pink-500/10 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800',
-  violet: 'from-violet-500/15 to-purple-500/10 text-violet-700 dark:text-violet-300 border-violet-200 dark:border-violet-800',
-  slate: 'from-slate-500/15 to-slate-400/10 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800',
+  sky: 'from-sky-500/15 to-cyan-500/10 text-sky-700 border-sky-200',
+  emerald: 'from-emerald-500/15 to-teal-500/10 text-emerald-700 border-emerald-200',
+  amber: 'from-amber-500/15 to-orange-500/10 text-amber-700 border-amber-200',
+  rose: 'from-rose-500/15 to-pink-500/10 text-rose-700 border-rose-200',
+  violet: 'from-violet-500/15 to-purple-500/10 text-violet-700 border-violet-200',
+  slate: 'from-slate-500/15 to-slate-400/10 text-slate-700 border-slate-200',
 }
 
 export function StatsCard({
@@ -37,8 +37,8 @@ export function StatsCard({
     >
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-sm text-gray-500 dark:text-gray-400">{label}</p>
-          <p className="mt-2 text-4xl font-black text-gray-900 dark:text-white">
+          <p className="text-sm text-gray-500">{label}</p>
+          <p className="mt-2 text-4xl font-black text-gray-900">
             {value}
           </p>
         </div>
@@ -49,8 +49,8 @@ export function StatsCard({
       </div>
 
       <div className="mt-3 flex items-center justify-between gap-3 text-sm">
-        <p className="text-green-500 dark:text-green-400">{description}</p>
-        {trend ? <p className="font-medium text-blue-600 dark:text-blue-400">{trend}</p> : null}
+        <p className="text-green-500">{description}</p>
+        {trend ? <p className="font-medium text-blue-600">{trend}</p> : null}
       </div>
     </AdminCard>
   )
@@ -63,7 +63,7 @@ export function AdminCard({
   return (
     <div
       className={cn(
-        'bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/60 dark:border-slate-800 rounded-3xl shadow-xl',
+        'bg-white/80 backdrop-blur-xl border border-white/60 rounded-3xl shadow-xl',
         className,
       )}
     >

@@ -12,14 +12,10 @@ import {
   Key,
   Save,
 } from "lucide-react";
-import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 export default function SettingsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-8">
-      <div className="absolute top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50 p-8">
 
       {/* Hero */}
 
@@ -41,7 +37,7 @@ export default function SettingsPage() {
 
       <div className="grid lg:grid-cols-3 gap-8 mb-8">
 
-        <div className="lg:col-span-1 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
+        <div className="lg:col-span-1 bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
 
           <div className="flex flex-col items-center">
 
@@ -49,11 +45,11 @@ export default function SettingsPage() {
               RS
             </div>
 
-            <h2 className="text-2xl font-bold mt-5 text-slate-900 dark:text-white">
+            <h2 className="text-2xl font-bold mt-5">
               Rahul Sharma
             </h2>
 
-            <p className="text-gray-500 dark:text-gray-400">
+            <p className="text-gray-500">
               Senior Full Stack Instructor
             </p>
 
@@ -65,9 +61,9 @@ export default function SettingsPage() {
 
         </div>
 
-        <div className="lg:col-span-2 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
+        <div className="lg:col-span-2 bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
 
-          <h2 className="text-3xl font-bold mb-6 text-slate-900 dark:text-white">
+          <h2 className="text-3xl font-bold mb-6">
             Personal Information
           </h2>
 
@@ -76,25 +72,25 @@ export default function SettingsPage() {
             <input
               placeholder="Full Name"
               defaultValue="Rahul Sharma"
-              className="p-4 rounded-2xl border dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              className="p-4 rounded-2xl border"
             />
 
             <input
               placeholder="Email"
               defaultValue="rahul@incrafto.com"
-              className="p-4 rounded-2xl border dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              className="p-4 rounded-2xl border"
             />
 
             <input
               placeholder="Phone Number"
               defaultValue="+91 9876543210"
-              className="p-4 rounded-2xl border dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              className="p-4 rounded-2xl border"
             />
 
             <input
               placeholder="Department"
               defaultValue="Computer Science"
-              className="p-4 rounded-2xl border dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+              className="p-4 rounded-2xl border"
             />
 
           </div>
@@ -109,16 +105,16 @@ export default function SettingsPage() {
 
         {/* Notifications */}
 
-        <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
+        <div className="bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
 
-          <div className="flex items-center gap-3 mb-6 text-slate-900 dark:text-white">
+          <div className="flex items-center gap-3 mb-6">
             <Bell />
             <h2 className="text-2xl font-bold">
               Notifications
             </h2>
           </div>
 
-          <div className="space-y-4 text-slate-900 dark:text-white">
+          <div className="space-y-4">
 
             <label className="flex justify-between">
               Assignment Alerts
@@ -146,9 +142,9 @@ export default function SettingsPage() {
 
         {/* Security */}
 
-        <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
+        <div className="bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
 
-          <div className="flex items-center gap-3 mb-6 text-slate-900 dark:text-white">
+          <div className="flex items-center gap-3 mb-6">
             <Shield />
             <h2 className="text-2xl font-bold">
               Security
@@ -157,15 +153,15 @@ export default function SettingsPage() {
 
           <div className="space-y-4">
 
-            <button className="w-full border dark:border-slate-800 p-4 rounded-2xl text-left text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800">
+            <button className="w-full border p-4 rounded-2xl text-left">
               Change Password
             </button>
 
-            <button className="w-full border dark:border-slate-800 p-4 rounded-2xl text-left text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800">
+            <button className="w-full border p-4 rounded-2xl text-left">
               Two-Factor Authentication
             </button>
 
-            <button className="w-full border dark:border-slate-800 p-4 rounded-2xl text-left text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800">
+            <button className="w-full border p-4 rounded-2xl text-left">
               Login Activity
             </button>
 
@@ -179,7 +175,7 @@ export default function SettingsPage() {
 
       <div className="grid lg:grid-cols-3 gap-8 mb-8">
 
-        <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl text-slate-900 dark:text-white">
+        <div className="bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
 
           <Moon className="mb-4" />
 
@@ -187,13 +183,13 @@ export default function SettingsPage() {
             Appearance
           </h3>
 
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
+          <p className="text-gray-500 mt-2">
             Dark mode and dashboard themes.
           </p>
 
         </div>
 
-        <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl text-slate-900 dark:text-white">
+        <div className="bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
 
           <Globe className="mb-4" />
 
@@ -201,13 +197,13 @@ export default function SettingsPage() {
             Language
           </h3>
 
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
+          <p className="text-gray-500 mt-2">
             English (India)
           </p>
 
         </div>
 
-        <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl text-slate-900 dark:text-white">
+        <div className="bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
 
           <Smartphone className="mb-4" />
 
@@ -215,7 +211,7 @@ export default function SettingsPage() {
             Devices
           </h3>
 
-          <p className="text-gray-500 dark:text-gray-400 mt-2">
+          <p className="text-gray-500 mt-2">
             3 active devices connected.
           </p>
 
@@ -225,9 +221,9 @@ export default function SettingsPage() {
 
       {/* API & Integrations */}
 
-      <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl mb-8">
+      <div className="bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl mb-8">
 
-        <div className="flex items-center gap-3 mb-6 text-slate-900 dark:text-white">
+        <div className="flex items-center gap-3 mb-6">
           <Key />
           <h2 className="text-3xl font-bold">
             Connected Services
@@ -236,15 +232,15 @@ export default function SettingsPage() {
 
         <div className="grid md:grid-cols-3 gap-4">
 
-          <div className="border dark:border-slate-800 rounded-2xl p-5 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+          <div className="border rounded-2xl p-5">
             Google Meet
           </div>
 
-          <div className="border dark:border-slate-800 rounded-2xl p-5 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+          <div className="border rounded-2xl p-5">
             Zoom
           </div>
 
-          <div className="border dark:border-slate-800 rounded-2xl p-5 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+          <div className="border rounded-2xl p-5">
             Microsoft Teams
           </div>
 

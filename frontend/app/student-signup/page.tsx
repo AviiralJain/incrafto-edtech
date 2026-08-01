@@ -6,7 +6,6 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 export default function StudentSignupPage() {
   const router = useRouter();
@@ -75,10 +74,7 @@ export default function StudentSignupPage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-slate-950">
-      <div className="absolute top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
+    <div className="relative min-h-screen overflow-hidden bg-slate-950">
       {/* Background */}
       <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl" />
       <div className="absolute bottom-10 right-10 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl" />
@@ -89,13 +85,13 @@ export default function StudentSignupPage() {
           initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          className="hidden lg:flex w-1/2 flex-col justify-center px-20 text-slate-900 dark:text-white"
+          className="hidden lg:flex w-1/2 flex-col justify-center px-20 text-white"
         >
           <h1 className="text-5xl font-bold leading-tight">
             Join InCrafto Today
           </h1>
 
-          <p className="mt-6 text-lg text-slate-600 dark:text-slate-300">
+          <p className="mt-6 text-lg text-slate-300">
             Learn industry-ready skills,
             work on real-world projects and
             build a successful career.
@@ -109,12 +105,12 @@ export default function StudentSignupPage() {
           transition={{ duration: 0.7 }}
           className="flex w-full lg:w-1/2 items-center justify-center px-6"
         >
-          <div className="w-full max-w-lg rounded-3xl border border-black/5 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-xl p-8 shadow-2xl">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white text-center">
+          <div className="w-full max-w-lg rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 shadow-2xl">
+            <h2 className="text-3xl font-bold text-white text-center">
               Create Account
             </h2>
 
-            <p className="mt-2 text-center text-slate-600 dark:text-slate-400">
+            <p className="mt-2 text-center text-slate-400">
               Start your learning journey today
             </p>
 
@@ -133,7 +129,7 @@ export default function StudentSignupPage() {
                   setName(e.target.value)
                 }
                 placeholder="Full Name"
-                className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-white outline-none"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none"
               />
 
               {/* Email */}
@@ -144,7 +140,7 @@ export default function StudentSignupPage() {
                   setEmail(e.target.value)
                 }
                 placeholder="Email Address"
-                className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-white outline-none"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none"
               />
 
               {/* Password */}
@@ -160,7 +156,7 @@ export default function StudentSignupPage() {
                     setPassword(e.target.value)
                   }
                   placeholder="Password"
-                  className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-white outline-none"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none"
                 />
 
                 <button
@@ -195,7 +191,7 @@ export default function StudentSignupPage() {
                     )
                   }
                   placeholder="Confirm Password"
-                  className="w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-white outline-none"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none"
                 />
 
                 <button
@@ -227,7 +223,7 @@ export default function StudentSignupPage() {
               </button>
             </form>
 
-            <p className="mt-6 text-center text-slate-600 dark:text-slate-400">
+            <p className="mt-6 text-center text-slate-400">
               Already have an account?{" "}
               <Link
                 href="/student-login"

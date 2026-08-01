@@ -61,9 +61,9 @@ export function DataTable({
     <AdminCard className="p-8">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">{title}</h2>
+            <h2 className="text-3xl font-bold text-gray-900">{title}</h2>
             {description ? (
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mt-1 text-sm text-gray-500">
                 {description}
               </p>
             ) : null}
@@ -73,35 +73,35 @@ export function DataTable({
 
       <div>
         {loading ? (
-          <div className="flex items-center gap-3 px-6 py-10 text-sm text-slate-500 dark:text-slate-400">
+          <div className="flex items-center gap-3 px-6 py-10 text-sm text-slate-500">
             <div className="h-4 w-4 animate-spin rounded-full border-2 border-slate-300 border-t-blue-500" />
             Loading records...
           </div>
         ) : error ? (
-          <div className="flex flex-col gap-3 px-6 py-10 text-sm text-rose-600 dark:text-rose-400">
+          <div className="flex flex-col gap-3 px-6 py-10 text-sm text-rose-600">
             <p>{error}</p>
             {onRetry ? (
               <button
                 type="button"
                 onClick={onRetry}
-                className="w-fit rounded-full border border-rose-200 dark:border-rose-800 px-4 py-2 text-xs font-semibold text-rose-700 dark:text-rose-300 transition hover:bg-rose-50 dark:hover:bg-rose-900/30"
+                className="w-fit rounded-full border border-rose-200 px-4 py-2 text-xs font-semibold text-rose-700 transition hover:bg-rose-50"
               >
                 Retry
               </button>
             ) : null}
           </div>
         ) : rows.length === 0 ? (
-          <div className="px-6 py-10 text-sm text-slate-500 dark:text-slate-400">{emptyState}</div>
+          <div className="px-6 py-10 text-sm text-slate-500">{emptyState}</div>
         ) : (
           <div className="space-y-6">
             <Table>
               <TableHeader>
-                <TableRow className="border-slate-200/80 dark:border-slate-800 hover:bg-transparent">
+                <TableRow className="border-slate-200/80 hover:bg-transparent">
                   {columns.map((column) => (
                     <TableHead
                       key={column.key}
                       className={cn(
-                        'h-12 px-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400',
+                        'h-12 px-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500',
                         column.className,
                       )}
                     >
@@ -113,11 +113,11 @@ export function DataTable({
 
               <TableBody>
                 {rows.map((row, index) => (
-                  <TableRow key={row.id ?? index} className="border-slate-200/80 dark:border-slate-800">
+                  <TableRow key={row.id ?? index} className="border-slate-200/80">
                     {columns.map((column) => (
                       <TableCell
                         key={column.key}
-                        className={cn('px-6 py-4 text-sm text-gray-700 dark:text-slate-300', column.className)}
+                        className={cn('px-6 py-4 text-sm text-gray-700', column.className)}
                       >
                         {row[column.key]}
                       </TableCell>
@@ -128,7 +128,7 @@ export function DataTable({
             </Table>
 
             {pagination ? (
-              <div className="flex flex-col gap-3 border-t border-slate-200/80 dark:border-slate-800 pt-4 text-sm text-slate-500 dark:text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-3 border-t border-slate-200/80 pt-4 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
                 <p>
                   Page {pagination.page} of {pagination.totalPages || 1} · {pagination.total} total
                 </p>
@@ -137,7 +137,7 @@ export function DataTable({
                     type="button"
                     onClick={() => pagination.onPageChange(pagination.page - 1)}
                     disabled={!canGoPrev}
-                    className="rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 transition hover:bg-slate-50 dark:hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     Previous
                   </button>
@@ -145,7 +145,7 @@ export function DataTable({
                     type="button"
                     onClick={() => pagination.onPageChange(pagination.page + 1)}
                     disabled={!canGoNext}
-                    className="rounded-full border border-slate-200 dark:border-slate-700 px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 transition hover:bg-slate-50 dark:hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     Next
                   </button>

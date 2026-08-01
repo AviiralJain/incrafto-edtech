@@ -8,7 +8,6 @@ import {
   Users,
   Plus,
 } from "lucide-react";
-import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 const announcements = [
   {
@@ -36,10 +35,7 @@ const announcements = [
 
 export default function AnnouncementsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-8">
-      <div className="absolute top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 p-8">
 
       {/* Hero Section */}
 
@@ -104,11 +100,11 @@ export default function AnnouncementsPage() {
         ].map((item) => (
           <div
             key={item.title}
-            className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-6 shadow-xl text-slate-900 dark:text-white"
+            className="bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-xl"
           >
             <item.icon size={28} />
 
-            <h3 className="mt-4 text-gray-500 dark:text-gray-400">
+            <h3 className="mt-4 text-gray-500">
               {item.title}
             </h3>
 
@@ -128,11 +124,11 @@ export default function AnnouncementsPage() {
           Create Announcement
         </button>
 
-        <button className="bg-white dark:bg-slate-900 py-4 rounded-2xl shadow-lg text-slate-900 dark:text-white">
+        <button className="bg-white py-4 rounded-2xl shadow-lg">
           Send Notification
         </button>
 
-        <button className="bg-white dark:bg-slate-900 py-4 rounded-2xl shadow-lg text-slate-900 dark:text-white">
+        <button className="bg-white py-4 rounded-2xl shadow-lg">
           View History
         </button>
 
@@ -140,9 +136,9 @@ export default function AnnouncementsPage() {
 
       {/* Announcement List */}
 
-      <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
+      <div className="bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
 
-        <h2 className="text-3xl font-bold mb-8 text-slate-900 dark:text-white">
+        <h2 className="text-3xl font-bold mb-8">
           Recent Announcements
         </h2>
 
@@ -152,27 +148,27 @@ export default function AnnouncementsPage() {
             <motion.div
               key={index}
               whileHover={{ scale: 1.01 }}
-              className="bg-white dark:bg-slate-900 rounded-3xl p-6 border dark:border-slate-800"
+              className="bg-white rounded-3xl p-6 border"
             >
 
               <div className="flex justify-between items-start">
 
                 <div>
 
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-2xl font-bold">
                     {item.title}
                   </h3>
 
-                  <p className="text-gray-600 dark:text-gray-400 mt-3">
+                  <p className="text-gray-600 mt-3">
                     {item.description}
                   </p>
 
                 </div>
 
-                <Plus className="text-slate-900 dark:text-white" />
+                <Plus />
               </div>
 
-              <div className="flex gap-8 mt-6 text-gray-500 dark:text-gray-400">
+              <div className="flex gap-8 mt-6 text-gray-500">
 
                 <span>{item.date}</span>
 

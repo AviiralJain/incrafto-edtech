@@ -12,7 +12,6 @@ import {
   Eye,
   FolderOpen,
 } from "lucide-react";
-import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 export default function StudentContentPage() {
 
@@ -46,10 +45,7 @@ export default function StudentContentPage() {
 
   return (
 
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-cyan-50 to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-8">
-      <div className="absolute top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-cyan-50 to-blue-50 p-8">
 
       {/* Hero */}
 
@@ -71,7 +67,7 @@ export default function StudentContentPage() {
 
       {/* Search */}
 
-      <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-xl mt-8 p-6">
+      <div className="bg-white rounded-3xl shadow-xl mt-8 p-6">
 
         <div className="flex items-center gap-4">
 
@@ -85,7 +81,7 @@ export default function StudentContentPage() {
 
             placeholder="Search resources..."
 
-            className="w-full outline-none bg-transparent text-slate-900 dark:text-white"
+            className="w-full outline-none"
 
           />
 
@@ -103,7 +99,7 @@ export default function StudentContentPage() {
 
             key={item._id}
 
-            className="bg-white dark:bg-slate-900 rounded-[30px] shadow-xl p-8"
+            className="bg-white rounded-[30px] shadow-xl p-8"
 
           >
 
@@ -131,7 +127,7 @@ export default function StudentContentPage() {
 
                   }
 
-                  <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                  <h2 className="text-2xl font-bold">
 
                     {item.title}
 
@@ -139,13 +135,13 @@ export default function StudentContentPage() {
 
                 </div>
 
-                <p className="text-gray-500 dark:text-gray-400 mt-3">
+                <p className="text-gray-500 mt-3">
 
                   {item.description}
 
                 </p>
 
-                <div className="flex gap-6 mt-5 text-gray-500 dark:text-gray-400">
+                <div className="flex gap-6 mt-5 text-gray-500">
 
                   <span>{item.week}</span>
 
@@ -193,7 +189,7 @@ export default function StudentContentPage() {
 
                 download
 
-                className="flex-1 py-3 rounded-2xl border dark:border-slate-700 flex justify-center items-center gap-2 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition"
+                className="flex-1 py-3 rounded-2xl border flex justify-center items-center gap-2"
 
               >
 
@@ -211,7 +207,7 @@ export default function StudentContentPage() {
 
         {filteredResources.length===0 &&(
 
-          <div className="col-span-2 bg-white dark:bg-slate-900 rounded-[30px] p-20 shadow-xl text-center">
+          <div className="col-span-2 bg-white rounded-[30px] p-20 shadow-xl text-center">
 
             <FolderOpen
 
@@ -221,13 +217,13 @@ export default function StudentContentPage() {
 
             />
 
-            <h2 className="text-3xl font-bold mt-6 text-slate-900 dark:text-white">
+            <h2 className="text-3xl font-bold mt-6">
 
               No Resources Available
 
             </h2>
 
-            <p className="text-gray-500 dark:text-gray-400 mt-3">
+            <p className="text-gray-500 mt-3">
 
               Your teacher hasn't uploaded any learning material yet.
 

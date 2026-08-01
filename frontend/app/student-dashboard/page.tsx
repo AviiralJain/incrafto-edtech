@@ -19,7 +19,6 @@ import {
   Trophy,
   ChevronRight,
 } from "lucide-react";
-import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 export default function StudentDashboard() {
   const router = useRouter();
@@ -179,10 +178,7 @@ export default function StudentDashboard() {
     <div className="min-h-screen bg-gradient-to-br from-[#eef4ff] via-[#e7f0ff] to-[#f3e8ff] dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-20 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-pulse" />
-      </div>
-
-      <div className="absolute top-6 right-6 z-50">
-        <ThemeToggle />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-pulse" />
       </div>
 
       <div className="relative flex">

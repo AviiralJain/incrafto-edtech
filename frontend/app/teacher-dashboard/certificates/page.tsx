@@ -9,7 +9,6 @@ import {
   FileBadge,
   Star,
 } from "lucide-react";
-import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 const certificates = [
   {
@@ -37,10 +36,7 @@ const certificates = [
 
 export default function CertificatesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-8">
-      <div className="absolute top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 p-8">
 
       {/* Hero */}
 
@@ -112,15 +108,15 @@ export default function CertificatesPage() {
         ].map((item) => (
           <div
             key={item.title}
-            className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-6 shadow-xl"
+            className="bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-xl"
           >
-            <item.icon size={28} className="text-slate-900 dark:text-white" />
+            <item.icon size={28} />
 
-            <h3 className="mt-4 text-gray-500 dark:text-gray-400">
+            <h3 className="mt-4 text-gray-500">
               {item.title}
             </h3>
 
-            <p className="text-4xl font-black text-slate-900 dark:text-white">
+            <p className="text-4xl font-black">
               {item.value}
             </p>
 
@@ -137,15 +133,15 @@ export default function CertificatesPage() {
           Generate Certificate
         </button>
 
-        <button className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white py-4 rounded-2xl shadow">
+        <button className="bg-white py-4 rounded-2xl shadow">
           Bulk Generate
         </button>
 
-        <button className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white py-4 rounded-2xl shadow">
+        <button className="bg-white py-4 rounded-2xl shadow">
           Verify Certificate
         </button>
 
-        <button className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white py-4 rounded-2xl shadow">
+        <button className="bg-white py-4 rounded-2xl shadow">
           Download Reports
         </button>
 
@@ -159,24 +155,24 @@ export default function CertificatesPage() {
           <motion.div
             key={index}
             whileHover={{ scale: 1.01 }}
-            className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl"
+            className="bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl"
           >
 
             <div className="flex justify-between items-center">
 
               <div>
 
-                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                <h2 className="text-2xl font-bold">
                   {certificate.student}
                 </h2>
 
-                <p className="text-gray-500 dark:text-gray-400 mt-2">
+                <p className="text-gray-500 mt-2">
                   {certificate.course}
                 </p>
 
               </div>
 
-              <span className={`px-4 py-2 rounded-full ${certificate.status === "Issued" ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" : "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"}`}>
+              <span className="px-4 py-2 rounded-full bg-green-100 text-green-700">
                 {certificate.status}
               </span>
 
@@ -186,11 +182,11 @@ export default function CertificatesPage() {
 
               <div>
 
-                <p className="text-gray-500 dark:text-gray-400">
+                <p className="text-gray-500">
                   Issue Date
                 </p>
 
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="text-xl font-bold">
                   {certificate.issueDate}
                 </h3>
 
@@ -198,11 +194,11 @@ export default function CertificatesPage() {
 
               <div>
 
-                <p className="text-gray-500 dark:text-gray-400">
+                <p className="text-gray-500">
                   Final Score
                 </p>
 
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="text-xl font-bold">
                   {certificate.score}
                 </h3>
 
@@ -210,11 +206,11 @@ export default function CertificatesPage() {
 
               <div>
 
-                <p className="text-gray-500 dark:text-gray-400">
+                <p className="text-gray-500">
                   Certificate ID
                 </p>
 
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="text-xl font-bold">
                   INC-{1000 + index}
                 </h3>
 
@@ -228,7 +224,7 @@ export default function CertificatesPage() {
                 View Certificate
               </button>
 
-              <button className="border border-slate-200 dark:border-slate-800 px-5 py-3 rounded-xl flex items-center gap-2 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800">
+              <button className="border px-5 py-3 rounded-xl flex items-center gap-2">
                 <Download size={16} />
                 Download
               </button>

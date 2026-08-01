@@ -44,8 +44,8 @@ export function DashboardWidgets() {
           </div>
           <div className="flex items-center gap-3">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Approval queue</h2>
-              <p className="mt-1 text-gray-500 dark:text-gray-400">Items that need attention from the admin team.</p>
+              <h2 className="text-3xl font-bold text-gray-900">Approval queue</h2>
+              <p className="mt-1 text-gray-500">Items that need attention from the admin team.</p>
             </div>
           </div>
         </div>
@@ -54,13 +54,13 @@ export function DashboardWidgets() {
           {approvals.map((item) => (
             <div
               key={item.title}
-              className="flex flex-col gap-3 rounded-2xl bg-slate-50 dark:bg-slate-800 p-5 sm:flex-row sm:items-center sm:justify-between"
+              className="flex flex-col gap-3 rounded-2xl bg-slate-50 p-5 sm:flex-row sm:items-center sm:justify-between"
             >
               <div>
-                <p className="font-semibold text-gray-900 dark:text-white">{item.title}</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{item.meta}</p>
+                <p className="font-semibold text-gray-900">{item.title}</p>
+                <p className="text-sm text-gray-500">{item.meta}</p>
               </div>
-              <span className="inline-flex w-fit rounded-full bg-white dark:bg-slate-700 px-3 py-1 text-xs font-semibold text-gray-600 dark:text-gray-300 shadow-sm">
+              <span className="inline-flex w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold text-gray-600 shadow-sm">
                 {item.tag}
               </span>
             </div>
@@ -69,17 +69,17 @@ export function DashboardWidgets() {
       </AdminCard>
 
       <div className="space-y-6">
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/60 dark:border-slate-800 rounded-3xl p-8 shadow-xl">
-          <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Quick Actions</h2>
+        <div className="bg-white/80 backdrop-blur-xl border border-white/60 rounded-3xl p-8 shadow-xl">
+          <h2 className="text-2xl font-bold mb-6">Quick Actions</h2>
           <div className="grid grid-cols-2 gap-3">
             {actions.map((action) => (
               <button
                 key={action.label}
                 type="button"
-                className="rounded-2xl p-4 bg-linear-to-r from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-800 hover:shadow-lg text-left"
+                className="rounded-2xl p-4 bg-linear-to-r from-blue-50 to-purple-50 hover:shadow-lg text-left"
               >
-                <action.icon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                <span className="mt-3 block text-sm font-semibold text-gray-900 dark:text-white">{action.label}</span>
+                <action.icon className="h-5 w-5 text-blue-600" />
+                <span className="mt-3 block text-sm font-semibold text-gray-900">{action.label}</span>
               </button>
             ))}
           </div>
@@ -91,8 +91,8 @@ export function DashboardWidgets() {
               <TrendingUp className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Recent Activity</h2>
-              <p className="mt-1 text-gray-500 dark:text-gray-400">Operational highlights from the last 24 hours.</p>
+              <h2 className="text-2xl font-bold text-gray-900">Recent Activity</h2>
+              <p className="mt-1 text-gray-500">Operational highlights from the last 24 hours.</p>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ export function DashboardWidgets() {
             {activity.map((entry) => (
               <div
                 key={entry}
-                className="rounded-2xl bg-linear-to-r from-slate-50 to-purple-50 dark:from-slate-800 dark:to-slate-800 px-4 py-3 text-sm text-gray-700 dark:text-slate-200"
+                className="rounded-2xl bg-linear-to-r from-slate-50 to-purple-50 px-4 py-3 text-sm text-gray-700"
               >
                 {entry}
               </div>

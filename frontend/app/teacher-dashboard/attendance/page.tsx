@@ -9,7 +9,6 @@ import {
   Download,
   ClipboardCheck,
 } from "lucide-react";
-import { ThemeToggle } from '@/components/layout/theme-toggle'
 
 const students = [
   {
@@ -44,10 +43,7 @@ const students = [
 
 export default function AttendancePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-8">
-      <div className="absolute top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 p-8">
 
       {/* Hero */}
 
@@ -119,15 +115,15 @@ export default function AttendancePage() {
         ].map((item) => (
           <div
             key={item.title}
-            className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl p-6 shadow-xl"
+            className="bg-white/70 backdrop-blur-xl rounded-3xl p-6 shadow-xl"
           >
-            <item.icon size={28} className="text-slate-900 dark:text-white" />
+            <item.icon size={28} />
 
-            <h3 className="mt-4 text-gray-500 dark:text-gray-400">
+            <h3 className="mt-4 text-gray-500">
               {item.title}
             </h3>
 
-            <p className="text-4xl font-black text-slate-900 dark:text-white">
+            <p className="text-4xl font-black">
               {item.value}
             </p>
 
@@ -143,15 +139,15 @@ export default function AttendancePage() {
           Mark Attendance
         </button>
 
-        <button className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-2xl py-4 shadow">
+        <button className="bg-white rounded-2xl py-4 shadow">
           Mark All Present
         </button>
 
-        <button className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-2xl py-4 shadow">
+        <button className="bg-white rounded-2xl py-4 shadow">
           Export Report
         </button>
 
-        <button className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-2xl py-4 shadow flex items-center justify-center gap-2">
+        <button className="bg-white rounded-2xl py-4 shadow flex items-center justify-center gap-2">
           <Download size={18} />
           Download CSV
         </button>
@@ -160,9 +156,9 @@ export default function AttendancePage() {
 
       {/* Student Attendance */}
 
-      <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl mb-8">
+      <div className="bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl mb-8">
 
-        <h2 className="text-3xl font-bold mb-8 text-slate-900 dark:text-white">
+        <h2 className="text-3xl font-bold mb-8">
           Student Attendance Records
         </h2>
 
@@ -172,18 +168,18 @@ export default function AttendancePage() {
             <motion.div
               key={student.id}
               whileHover={{ scale: 1.01 }}
-              className="bg-white dark:bg-slate-900 rounded-3xl p-6 border dark:border-slate-800"
+              className="bg-white rounded-3xl p-6 border"
             >
 
               <div className="flex justify-between items-center">
 
                 <div>
 
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-xl font-bold">
                     {student.name}
                   </h3>
 
-                  <p className="text-gray-500 dark:text-gray-400">
+                  <p className="text-gray-500">
                     Attendance: {student.attendance}%
                   </p>
 
@@ -192,8 +188,8 @@ export default function AttendancePage() {
                 <span
                   className={`px-4 py-2 rounded-full ${
                     student.status === "Present"
-                      ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                      : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                      ? "bg-green-100 text-green-700"
+                      : "bg-red-100 text-red-700"
                   }`}
                 >
                   {student.status}
@@ -201,7 +197,7 @@ export default function AttendancePage() {
 
               </div>
 
-              <div className="mt-4 text-gray-500 dark:text-gray-400">
+              <div className="mt-4 text-gray-500">
                 Last Attendance: {student.lastSeen}
               </div>
 
@@ -214,9 +210,9 @@ export default function AttendancePage() {
 
       {/* Weekly Analytics */}
 
-      <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
+      <div className="bg-white/70 backdrop-blur-xl rounded-[32px] p-8 shadow-xl">
 
-        <h2 className="text-3xl font-bold mb-8 text-slate-900 dark:text-white">
+        <h2 className="text-3xl font-bold mb-8">
           Weekly Attendance Overview
         </h2>
 
@@ -231,7 +227,7 @@ export default function AttendancePage() {
           ].map((item) => (
             <div key={item.day}>
 
-              <div className="flex justify-between mb-2 text-slate-900 dark:text-white">
+              <div className="flex justify-between mb-2">
 
                 <span>{item.day}</span>
 
@@ -239,7 +235,7 @@ export default function AttendancePage() {
 
               </div>
 
-              <div className="w-full h-3 bg-gray-200 dark:bg-slate-700 rounded-full">
+              <div className="w-full h-3 bg-gray-200 rounded-full">
 
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
