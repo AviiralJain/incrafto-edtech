@@ -2,9 +2,10 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ThemeToggle } from '@/components/layout/theme-toggle'
 import { getStoredAuth } from '@/lib/auth'
+import axios from 'axios'
 import {
   LayoutDashboard,
   Users,
@@ -32,6 +33,18 @@ import {
 export default function TeacherDashboard() {
   const router = useRouter();
 
+  const [teacher, setTeacher] = useState<{
+    firstName?: string;
+    lastName?: string;
+    specialization?: string;
+    totalStudents?: number;
+    totalBatches?: number;
+    totalAssignments?: number;
+    totalContent?: number;
+    batches?: Array<{ _id: string; name: string; course: { name: string } | null; status: string }>;
+    recentStudents?: Array<{ name: string; status: string; attendance: string }>;
+  } | null>(null);
+
   useEffect(() => {
     const auth = getStoredAuth();
     const role = auth?.user?.role?.toLowerCase();
@@ -48,7 +61,39 @@ export default function TeacherDashboard() {
 
     if (role === 'admin') {
       router.replace('/admin-dashboard');
+      return;
     }
+
+    axios
+      .get('http://localhost:5000/api/teacher/dashboard', {
+        headers: { Authorization: `Bearer ${auth.token}` },
+      })
+      .then((response) => {
+        if (response?.data?.data) {
+          const d = response.data.data;
+          setTeacher({
+            firstName: d.teacher?.firstName,
+            lastName: d.teacher?.lastName,
+            specialization: d.teacher?.specialization,
+            totalStudents: d.stats?.totalStudents,
+            totalBatches: d.stats?.totalBatches,
+            totalAssignments: d.stats?.totalAssignments,
+            totalContent: d.stats?.totalContent,
+            batches: d.batches,
+            recentStudents: d.recentStudents?.slice(0, 4).map((s: any) => ({
+              name: `${s.firstName} ${s.lastName}`,
+              status: s.placementStatus || 'Placement Ready',
+              attendance:
+  s.attendance !== undefined && s.attendance !== null
+    ? `${s.attendance}%`
+    : "—",
+            })),
+          });
+        }
+      })
+      .catch((error) => {
+        console.error('Failed to load teacher dashboard', error);
+      });
   }, [router]);
 
   const menuItems = [
@@ -66,6 +111,16 @@ export default function TeacherDashboard() {
     { icon: Briefcase, label: "Placements" },
     { icon: Settings, label: "Settings" },
   ];
+
+  const teacherFullName =
+    teacher?.firstName && teacher?.lastName
+      ? `${teacher.firstName} ${teacher.lastName}`
+      : 'Rahul Sharma';
+  const teacherInitials =
+    teacher?.firstName && teacher?.lastName
+      ? `${teacher.firstName[0]}${teacher.lastName[0]}`
+      : 'RS';
+  const teacherTitle = teacher?.specialization || 'Senior Instructor';
 
   return (
   <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
@@ -254,18 +309,18 @@ export default function TeacherDashboard() {
 
         <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold">
 
-          RS
+          {teacherInitials}
 
         </div>
 
         <div>
 
           <p className="font-semibold">
-            Rahul Sharma
+            {teacherFullName}
           </p>
 
           <p className="text-sm text-gray-500">
-            Senior Instructor
+            {teacherTitle}
           </p>
 
         </div>
@@ -331,13 +386,13 @@ export default function TeacherDashboard() {
         {[
           {
             title: "Total Students",
-            value: "128",
+            value: teacher?.totalStudents !== undefined ? String(teacher.totalStudents) : "128",
             icon: Users,
             color: "from-blue-500 to-cyan-500",
           },
           {
             title: "Active Classes",
-            value: "2",
+            value: teacher?.totalBatches !== undefined ? String(teacher.totalBatches) : "2",
             icon: BookOpen,
             color: "from-purple-500 to-pink-500",
           },
@@ -349,7 +404,7 @@ export default function TeacherDashboard() {
           },
           {
             title: "Pending Reviews",
-            value: "14",
+            value: teacher?.totalAssignments !== undefined ? String(teacher.totalAssignments) : "14",
             icon: ClipboardCheck,
             color: "from-orange-500 to-red-500",
           },
@@ -567,18 +622,17 @@ export default function TeacherDashboard() {
 
           <div className="space-y-5">
 
-            {[
-              {
-                name: "Full Stack Development",
-                students: "78",
-                attendance: "89%",
-              },
-              {
-                name: "Data Analytics",
-                students: "50",
-                attendance: "91%",
-              },
-            ].map((course) => (
+            {(teacher?.batches && teacher.batches.length > 0
+              ? teacher.batches.map((b) => ({
+                  name: b.course?.name || b.name,
+                  students: '—',
+                  attendance: '—',
+                }))
+              : [
+                  { name: "Full Stack Development", students: "78", attendance: "89%" },
+                  { name: "Data Analytics", students: "50", attendance: "91%" },
+                ]
+            ).map((course) => (
               <motion.div
                 key={course.name}
                 whileHover={{
@@ -635,29 +689,32 @@ export default function TeacherDashboard() {
 
           <div className="space-y-4">
 
-            {[
-              "Harshita Singh",
-              "Aviral Jain",
-              "Priya Sharma",
-              "Abhishek Singh",
-            ].map((student) => (
+            {(teacher?.recentStudents && teacher.recentStudents.length > 0
+              ? teacher.recentStudents
+              : [
+                  { name: "Harshita Singh", status: "Placement Ready", attendance: "92%" },
+                  { name: "Aviral Jain", status: "Placement Ready", attendance: "92%" },
+                  { name: "Priya Sharma", status: "Placement Ready", attendance: "92%" },
+                  { name: "Abhishek Singh", status: "Placement Ready", attendance: "92%" },
+                ]
+            ).map((student) => (
               <div
-                key={student}
+                key={student.name}
                 className="flex justify-between items-center p-4 rounded-2xl bg-slate-50 hover:bg-blue-50 transition-all"
               >
 
                 <div>
                   <h4 className="font-semibold">
-                    {student}
+                    {student.name}
                   </h4>
 
                   <p className="text-sm text-gray-500">
-                    Placement Ready
+                    {student.status}
                   </p>
                 </div>
 
                 <span className="text-green-600 font-bold">
-                  92%
+                  {student.attendance}
                 </span>
 
               </div>
@@ -731,7 +788,7 @@ export default function TeacherDashboard() {
               <div className="flex justify-between">
                 <span>Resources Uploaded</span>
                 <span className="font-bold">
-                  24
+                  {teacher?.totalContent ?? 24}
                 </span>
               </div>
 
